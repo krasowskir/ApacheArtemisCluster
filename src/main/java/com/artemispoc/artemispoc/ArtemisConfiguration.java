@@ -53,7 +53,7 @@ public class ArtemisConfiguration {
     @Bean("connectionFactory")
     public ConnectionFactory activeMQJMSConnectionFactory(@Qualifier("amqTransportConfiguration") TransportConfiguration transportConfiguration) throws JMSException {
         ActiveMQJMSConnectionFactory activeMQJMSConnectionFactory =
-                new ActiveMQJMSConnectionFactory( false, transportConfiguration);
+                new NettyConnectionFactory.( false, transportConfiguration);
         activeMQJMSConnectionFactory.setPassword(password);
         activeMQJMSConnectionFactory.setUser(userName);
         return activeMQJMSConnectionFactory;
